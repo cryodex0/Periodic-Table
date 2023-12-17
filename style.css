@@ -1,0 +1,5313 @@
+@import url("https://fonts.googleapis.com/css?family=Open Sans");
+
+body {
+  overflow: hidden;
+  background: linear-gradient(360deg, #030303 10%, #1f1f1f 360%);
+  text-shadow: 0 0 0.4vw currentColor;
+  backface-visibility: hidden;
+  font-family: "Open Sans", sans-serif;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  padding: 2%;
+}
+
+.wrapper>input {
+  -webkit-appearance: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.periodic-table {
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: repeat(18, 1fr);
+}
+
+.element {
+  position: relative;
+  font-size: 0.5vw;
+  padding-bottom: 100%;
+  cursor: pointer;
+  color: #fff;
+  transition: 300ms;
+}
+
+.element .overlay {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0%;
+  pointer-events: none;
+  transition: 500ms;
+}
+
+.element .square {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c0c0c;
+  border: 2px solid;
+  box-sizing: border-box;
+  box-shadow: 0 0 0.15vw currentColor;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition-property: transform, z-index, left, right, top, bottom;
+  transition-duration: 100ms, 0ms, 200ms, 200ms, 200ms, 200ms;
+  transition-delay: 0ms, 100ms, 0ms, 0ms, 0ms, 0ms;
+}
+
+.element .atomic-number {
+  font-size: 0.8vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding: 2px;
+  padding-top: 3px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.element .label {
+  text-align: center;
+  transition: 200ms;
+}
+
+.element .symbol {
+  font-size: 1.7vw;
+  font-weight: 500;
+}
+
+.element .name {
+  font-size: 0.65vw;
+}
+
+.element .atomic-mass {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px;
+  text-align: center;
+}
+
+.element .phase {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  list-style: none;
+  padding: 2px;
+  transition: 200ms;
+  text-align: right;
+}
+
+.element .radioactivity {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -29%);
+  font-size: 0.6vw;
+  list-style: none;
+  padding: 2px;
+  transition: 200ms;
+  text-align: right;
+}
+
+.element .origin {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -105%);
+  font-size: 0.6vw;
+  list-style: none;
+  padding: 2px;
+  transition: 200ms;
+  text-align: right;
+}
+
+.element .electronconfiguration {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .electronegativity {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .electronaffinity {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .ionizationenergy {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .density {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .meltingpoint {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .boilingpoint {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .discovery {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .atomicradius {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .heatoffusion {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .heatofvapor {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .oxidationstates {
+  position: absolute;
+  left: 0;
+  transform: translate(0%, -135%);
+  font-size: 0.3vw;
+  list-style: none;
+  padding: 2px;
+  opacity: 0;
+  transition: 200ms;
+  text-align: left;
+  width: 400%;
+}
+
+.element .atomic-weight {
+  position: absolute;
+  right: 0;
+  top: 0;
+  list-style: none;
+  margin: 0;
+  padding: 2px;
+  font-size: 0.4vw;
+  opacity: 0;
+  transition: 200ms;
+  text-align: right;
+}
+
+.element .model {
+  display: none;
+  position: absolute;
+  left: -500%;
+  right: -500%;
+  top: -500%;
+  bottom: -500%;
+  transform: scale(0.1);
+}
+
+.element .model .orbital {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border: 5px solid;
+  border-radius: 50%;
+  opacity: 0.35;
+}
+
+.element .model .orbital:nth-child(1) {
+  margin: 10%;
+  animation-duration: 40s;
+}
+
+.element .model .orbital:nth-child(2) {
+  margin: 15.5%;
+  animation-duration: 34s;
+}
+
+.element .model .orbital:nth-child(3) {
+  margin: 21%;
+  animation-duration: 28s;
+}
+
+.element .model .orbital:nth-child(4) {
+  margin: 26.5%;
+  animation-duration: 22s;
+}
+
+.element .model .orbital:nth-child(5) {
+  margin: 32%;
+  animation-duration: 16s;
+}
+
+.element .model .orbital:nth-child(6) {
+  margin: 37.5%;
+  animation-duration: 10s;
+}
+
+.element .model .orbital:nth-child(7) {
+  margin: 43%;
+  animation-duration: 4s;
+}
+
+.element .model .orbital .electron {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.element .model .orbital .electron::before {
+  content: "";
+  position: absolute;
+  left: calc(50% - 0.7vw);
+  top: -0.7vw;
+  width: 1.4vw;
+  height: 1.4vw;
+  background-color: currentColor;
+  border-radius: 50%;
+  opacity: 1 !important;
+  box-shadow: 0 0 1vw currentColor;
+}
+
+.element .model .orbital .electron:nth-last-child(1):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(2):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(2):first-child~.electron:nth-child(2) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(3):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(3):first-child~.electron:nth-child(2) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(3):first-child~.electron:nth-child(3) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(4):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(4):first-child~.electron:nth-child(2) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(4):first-child~.electron:nth-child(3) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(4):first-child~.electron:nth-child(4) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(5):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(5):first-child~.electron:nth-child(2) {
+  transform: rotate(72deg);
+}
+
+.element .model .orbital .electron:nth-last-child(5):first-child~.electron:nth-child(3) {
+  transform: rotate(144deg);
+}
+
+.element .model .orbital .electron:nth-last-child(5):first-child~.electron:nth-child(4) {
+  transform: rotate(216deg);
+}
+
+.element .model .orbital .electron:nth-last-child(5):first-child~.electron:nth-child(5) {
+  transform: rotate(288deg);
+}
+
+.element .model .orbital .electron:nth-last-child(6):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(6):first-child~.electron:nth-child(2) {
+  transform: rotate(60deg);
+}
+
+.element .model .orbital .electron:nth-last-child(6):first-child~.electron:nth-child(3) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(6):first-child~.electron:nth-child(4) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(6):first-child~.electron:nth-child(5) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(6):first-child~.electron:nth-child(6) {
+  transform: rotate(300deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(2) {
+  transform: rotate(51.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(3) {
+  transform: rotate(102.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(4) {
+  transform: rotate(154.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(5) {
+  transform: rotate(205.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(6) {
+  transform: rotate(257.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(7):first-child~.electron:nth-child(7) {
+  transform: rotate(308.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(3) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(4) {
+  transform: rotate(135deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(5) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(6) {
+  transform: rotate(225deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(7) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(8):first-child~.electron:nth-child(8) {
+  transform: rotate(315deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(2) {
+  transform: rotate(40deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(3) {
+  transform: rotate(80deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(4) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(5) {
+  transform: rotate(160deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(6) {
+  transform: rotate(200deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(7) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(8) {
+  transform: rotate(280deg);
+}
+
+.element .model .orbital .electron:nth-last-child(9):first-child~.electron:nth-child(9) {
+  transform: rotate(320deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(2) {
+  transform: rotate(36deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(3) {
+  transform: rotate(72deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(4) {
+  transform: rotate(108deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(5) {
+  transform: rotate(144deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(6) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(7) {
+  transform: rotate(216deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(8) {
+  transform: rotate(252deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(9) {
+  transform: rotate(288deg);
+}
+
+.element .model .orbital .electron:nth-last-child(10):first-child~.electron:nth-child(10) {
+  transform: rotate(324deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(2) {
+  transform: rotate(32.7272727273deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(3) {
+  transform: rotate(65.4545454545deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(4) {
+  transform: rotate(98.1818181818deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(5) {
+  transform: rotate(130.9090909091deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(6) {
+  transform: rotate(163.6363636364deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(7) {
+  transform: rotate(196.3636363636deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(8) {
+  transform: rotate(229.0909090909deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(9) {
+  transform: rotate(261.8181818182deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(10) {
+  transform: rotate(294.5454545455deg);
+}
+
+.element .model .orbital .electron:nth-last-child(11):first-child~.electron:nth-child(11) {
+  transform: rotate(327.2727272727deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(2) {
+  transform: rotate(30deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(3) {
+  transform: rotate(60deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(4) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(5) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(6) {
+  transform: rotate(150deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(7) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(8) {
+  transform: rotate(210deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(9) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(10) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(11) {
+  transform: rotate(300deg);
+}
+
+.element .model .orbital .electron:nth-last-child(12):first-child~.electron:nth-child(12) {
+  transform: rotate(330deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(2) {
+  transform: rotate(27.6923076923deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(3) {
+  transform: rotate(55.3846153846deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(4) {
+  transform: rotate(83.0769230769deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(5) {
+  transform: rotate(110.7692307692deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(6) {
+  transform: rotate(138.4615384615deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(7) {
+  transform: rotate(166.1538461538deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(8) {
+  transform: rotate(193.8461538462deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(9) {
+  transform: rotate(221.5384615385deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(10) {
+  transform: rotate(249.2307692308deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(11) {
+  transform: rotate(276.9230769231deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(12) {
+  transform: rotate(304.6153846154deg);
+}
+
+.element .model .orbital .electron:nth-last-child(13):first-child~.electron:nth-child(13) {
+  transform: rotate(332.3076923077deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(2) {
+  transform: rotate(25.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(3) {
+  transform: rotate(51.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(4) {
+  transform: rotate(77.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(5) {
+  transform: rotate(102.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(6) {
+  transform: rotate(128.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(7) {
+  transform: rotate(154.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(8) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(9) {
+  transform: rotate(205.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(10) {
+  transform: rotate(231.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(11) {
+  transform: rotate(257.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(12) {
+  transform: rotate(282.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(13) {
+  transform: rotate(308.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(14):first-child~.electron:nth-child(14) {
+  transform: rotate(334.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(2) {
+  transform: rotate(24deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(3) {
+  transform: rotate(48deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(4) {
+  transform: rotate(72deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(5) {
+  transform: rotate(96deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(6) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(7) {
+  transform: rotate(144deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(8) {
+  transform: rotate(168deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(9) {
+  transform: rotate(192deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(10) {
+  transform: rotate(216deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(11) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(12) {
+  transform: rotate(264deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(13) {
+  transform: rotate(288deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(14) {
+  transform: rotate(312deg);
+}
+
+.element .model .orbital .electron:nth-last-child(15):first-child~.electron:nth-child(15) {
+  transform: rotate(336deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(2) {
+  transform: rotate(22.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(3) {
+  transform: rotate(45deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(4) {
+  transform: rotate(67.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(5) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(6) {
+  transform: rotate(112.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(7) {
+  transform: rotate(135deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(8) {
+  transform: rotate(157.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(9) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(10) {
+  transform: rotate(202.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(11) {
+  transform: rotate(225deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(12) {
+  transform: rotate(247.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(13) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(14) {
+  transform: rotate(292.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(15) {
+  transform: rotate(315deg);
+}
+
+.element .model .orbital .electron:nth-last-child(16):first-child~.electron:nth-child(16) {
+  transform: rotate(337.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(2) {
+  transform: rotate(21.1764705882deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(3) {
+  transform: rotate(42.3529411765deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(4) {
+  transform: rotate(63.5294117647deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(5) {
+  transform: rotate(84.7058823529deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(6) {
+  transform: rotate(105.8823529412deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(7) {
+  transform: rotate(127.0588235294deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(8) {
+  transform: rotate(148.2352941176deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(9) {
+  transform: rotate(169.4117647059deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(10) {
+  transform: rotate(190.5882352941deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(11) {
+  transform: rotate(211.7647058824deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(12) {
+  transform: rotate(232.9411764706deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(13) {
+  transform: rotate(254.1176470588deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(14) {
+  transform: rotate(275.2941176471deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(15) {
+  transform: rotate(296.4705882353deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(16) {
+  transform: rotate(317.6470588235deg);
+}
+
+.element .model .orbital .electron:nth-last-child(17):first-child~.electron:nth-child(17) {
+  transform: rotate(338.8235294118deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(2) {
+  transform: rotate(20deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(3) {
+  transform: rotate(40deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(4) {
+  transform: rotate(60deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(5) {
+  transform: rotate(80deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(6) {
+  transform: rotate(100deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(7) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(8) {
+  transform: rotate(140deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(9) {
+  transform: rotate(160deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(10) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(11) {
+  transform: rotate(200deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(12) {
+  transform: rotate(220deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(13) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(14) {
+  transform: rotate(260deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(15) {
+  transform: rotate(280deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(16) {
+  transform: rotate(300deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(17) {
+  transform: rotate(320deg);
+}
+
+.element .model .orbital .electron:nth-last-child(18):first-child~.electron:nth-child(18) {
+  transform: rotate(340deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(2) {
+  transform: rotate(18.9473684211deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(3) {
+  transform: rotate(37.8947368421deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(4) {
+  transform: rotate(56.8421052632deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(5) {
+  transform: rotate(75.7894736842deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(6) {
+  transform: rotate(94.7368421053deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(7) {
+  transform: rotate(113.6842105263deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(8) {
+  transform: rotate(132.6315789474deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(9) {
+  transform: rotate(151.5789473684deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(10) {
+  transform: rotate(170.5263157895deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(11) {
+  transform: rotate(189.4736842105deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(12) {
+  transform: rotate(208.4210526316deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(13) {
+  transform: rotate(227.3684210526deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(14) {
+  transform: rotate(246.3157894737deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(15) {
+  transform: rotate(265.2631578947deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(16) {
+  transform: rotate(284.2105263158deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(17) {
+  transform: rotate(303.1578947368deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(18) {
+  transform: rotate(322.1052631579deg);
+}
+
+.element .model .orbital .electron:nth-last-child(19):first-child~.electron:nth-child(19) {
+  transform: rotate(341.0526315789deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(2) {
+  transform: rotate(18deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(3) {
+  transform: rotate(36deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(4) {
+  transform: rotate(54deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(5) {
+  transform: rotate(72deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(6) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(7) {
+  transform: rotate(108deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(8) {
+  transform: rotate(126deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(9) {
+  transform: rotate(144deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(10) {
+  transform: rotate(162deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(11) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(12) {
+  transform: rotate(198deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(13) {
+  transform: rotate(216deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(14) {
+  transform: rotate(234deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(15) {
+  transform: rotate(252deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(16) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(17) {
+  transform: rotate(288deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(18) {
+  transform: rotate(306deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(19) {
+  transform: rotate(324deg);
+}
+
+.element .model .orbital .electron:nth-last-child(20):first-child~.electron:nth-child(20) {
+  transform: rotate(342deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(2) {
+  transform: rotate(17.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(3) {
+  transform: rotate(34.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(4) {
+  transform: rotate(51.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(5) {
+  transform: rotate(68.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(6) {
+  transform: rotate(85.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(7) {
+  transform: rotate(102.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(8) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(9) {
+  transform: rotate(137.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(10) {
+  transform: rotate(154.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(11) {
+  transform: rotate(171.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(12) {
+  transform: rotate(188.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(13) {
+  transform: rotate(205.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(14) {
+  transform: rotate(222.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(15) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(16) {
+  transform: rotate(257.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(17) {
+  transform: rotate(274.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(18) {
+  transform: rotate(291.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(19) {
+  transform: rotate(308.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(20) {
+  transform: rotate(325.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(21):first-child~.electron:nth-child(21) {
+  transform: rotate(342.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(2) {
+  transform: rotate(16.3636363636deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(3) {
+  transform: rotate(32.7272727273deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(4) {
+  transform: rotate(49.0909090909deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(5) {
+  transform: rotate(65.4545454545deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(6) {
+  transform: rotate(81.8181818182deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(7) {
+  transform: rotate(98.1818181818deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(8) {
+  transform: rotate(114.5454545455deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(9) {
+  transform: rotate(130.9090909091deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(10) {
+  transform: rotate(147.2727272727deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(11) {
+  transform: rotate(163.6363636364deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(12) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(13) {
+  transform: rotate(196.3636363636deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(14) {
+  transform: rotate(212.7272727273deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(15) {
+  transform: rotate(229.0909090909deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(16) {
+  transform: rotate(245.4545454545deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(17) {
+  transform: rotate(261.8181818182deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(18) {
+  transform: rotate(278.1818181818deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(19) {
+  transform: rotate(294.5454545455deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(20) {
+  transform: rotate(310.9090909091deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(21) {
+  transform: rotate(327.2727272727deg);
+}
+
+.element .model .orbital .electron:nth-last-child(22):first-child~.electron:nth-child(22) {
+  transform: rotate(343.6363636364deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(2) {
+  transform: rotate(15.652173913deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(3) {
+  transform: rotate(31.3043478261deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(4) {
+  transform: rotate(46.9565217391deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(5) {
+  transform: rotate(62.6086956522deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(6) {
+  transform: rotate(78.2608695652deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(7) {
+  transform: rotate(93.9130434783deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(8) {
+  transform: rotate(109.5652173913deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(9) {
+  transform: rotate(125.2173913043deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(10) {
+  transform: rotate(140.8695652174deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(11) {
+  transform: rotate(156.5217391304deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(12) {
+  transform: rotate(172.1739130435deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(13) {
+  transform: rotate(187.8260869565deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(14) {
+  transform: rotate(203.4782608696deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(15) {
+  transform: rotate(219.1304347826deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(16) {
+  transform: rotate(234.7826086957deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(17) {
+  transform: rotate(250.4347826087deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(18) {
+  transform: rotate(266.0869565217deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(19) {
+  transform: rotate(281.7391304348deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(20) {
+  transform: rotate(297.3913043478deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(21) {
+  transform: rotate(313.0434782609deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(22) {
+  transform: rotate(328.6956521739deg);
+}
+
+.element .model .orbital .electron:nth-last-child(23):first-child~.electron:nth-child(23) {
+  transform: rotate(344.347826087deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(2) {
+  transform: rotate(15deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(3) {
+  transform: rotate(30deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(4) {
+  transform: rotate(45deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(5) {
+  transform: rotate(60deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(6) {
+  transform: rotate(75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(7) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(8) {
+  transform: rotate(105deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(9) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(10) {
+  transform: rotate(135deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(11) {
+  transform: rotate(150deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(12) {
+  transform: rotate(165deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(13) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(14) {
+  transform: rotate(195deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(15) {
+  transform: rotate(210deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(16) {
+  transform: rotate(225deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(17) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(18) {
+  transform: rotate(255deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(19) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(20) {
+  transform: rotate(285deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(21) {
+  transform: rotate(300deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(22) {
+  transform: rotate(315deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(23) {
+  transform: rotate(330deg);
+}
+
+.element .model .orbital .electron:nth-last-child(24):first-child~.electron:nth-child(24) {
+  transform: rotate(345deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(2) {
+  transform: rotate(14.4deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(3) {
+  transform: rotate(28.8deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(4) {
+  transform: rotate(43.2deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(5) {
+  transform: rotate(57.6deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(6) {
+  transform: rotate(72deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(7) {
+  transform: rotate(86.4deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(8) {
+  transform: rotate(100.8deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(9) {
+  transform: rotate(115.2deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(10) {
+  transform: rotate(129.6deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(11) {
+  transform: rotate(144deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(12) {
+  transform: rotate(158.4deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(13) {
+  transform: rotate(172.8deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(14) {
+  transform: rotate(187.2deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(15) {
+  transform: rotate(201.6deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(16) {
+  transform: rotate(216deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(17) {
+  transform: rotate(230.4deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(18) {
+  transform: rotate(244.8deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(19) {
+  transform: rotate(259.2deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(20) {
+  transform: rotate(273.6deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(21) {
+  transform: rotate(288deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(22) {
+  transform: rotate(302.4deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(23) {
+  transform: rotate(316.8deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(24) {
+  transform: rotate(331.2deg);
+}
+
+.element .model .orbital .electron:nth-last-child(25):first-child~.electron:nth-child(25) {
+  transform: rotate(345.6deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(2) {
+  transform: rotate(13.8461538462deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(3) {
+  transform: rotate(27.6923076923deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(4) {
+  transform: rotate(41.5384615385deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(5) {
+  transform: rotate(55.3846153846deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(6) {
+  transform: rotate(69.2307692308deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(7) {
+  transform: rotate(83.0769230769deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(8) {
+  transform: rotate(96.9230769231deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(9) {
+  transform: rotate(110.7692307692deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(10) {
+  transform: rotate(124.6153846154deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(11) {
+  transform: rotate(138.4615384615deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(12) {
+  transform: rotate(152.3076923077deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(13) {
+  transform: rotate(166.1538461538deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(14) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(15) {
+  transform: rotate(193.8461538462deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(16) {
+  transform: rotate(207.6923076923deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(17) {
+  transform: rotate(221.5384615385deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(18) {
+  transform: rotate(235.3846153846deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(19) {
+  transform: rotate(249.2307692308deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(20) {
+  transform: rotate(263.0769230769deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(21) {
+  transform: rotate(276.9230769231deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(22) {
+  transform: rotate(290.7692307692deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(23) {
+  transform: rotate(304.6153846154deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(24) {
+  transform: rotate(318.4615384615deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(25) {
+  transform: rotate(332.3076923077deg);
+}
+
+.element .model .orbital .electron:nth-last-child(26):first-child~.electron:nth-child(26) {
+  transform: rotate(346.1538461538deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(2) {
+  transform: rotate(13.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(3) {
+  transform: rotate(26.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(4) {
+  transform: rotate(40deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(5) {
+  transform: rotate(53.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(6) {
+  transform: rotate(66.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(7) {
+  transform: rotate(80deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(8) {
+  transform: rotate(93.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(9) {
+  transform: rotate(106.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(10) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(11) {
+  transform: rotate(133.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(12) {
+  transform: rotate(146.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(13) {
+  transform: rotate(160deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(14) {
+  transform: rotate(173.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(15) {
+  transform: rotate(186.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(16) {
+  transform: rotate(200deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(17) {
+  transform: rotate(213.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(18) {
+  transform: rotate(226.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(19) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(20) {
+  transform: rotate(253.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(21) {
+  transform: rotate(266.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(22) {
+  transform: rotate(280deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(23) {
+  transform: rotate(293.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(24) {
+  transform: rotate(306.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(25) {
+  transform: rotate(320deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(26) {
+  transform: rotate(333.3333333333deg);
+}
+
+.element .model .orbital .electron:nth-last-child(27):first-child~.electron:nth-child(27) {
+  transform: rotate(346.6666666667deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(2) {
+  transform: rotate(12.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(3) {
+  transform: rotate(25.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(4) {
+  transform: rotate(38.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(5) {
+  transform: rotate(51.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(6) {
+  transform: rotate(64.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(7) {
+  transform: rotate(77.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(8) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(9) {
+  transform: rotate(102.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(10) {
+  transform: rotate(115.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(11) {
+  transform: rotate(128.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(12) {
+  transform: rotate(141.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(13) {
+  transform: rotate(154.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(14) {
+  transform: rotate(167.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(15) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(16) {
+  transform: rotate(192.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(17) {
+  transform: rotate(205.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(18) {
+  transform: rotate(218.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(19) {
+  transform: rotate(231.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(20) {
+  transform: rotate(244.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(21) {
+  transform: rotate(257.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(22) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(23) {
+  transform: rotate(282.8571428571deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(24) {
+  transform: rotate(295.7142857143deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(25) {
+  transform: rotate(308.5714285714deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(26) {
+  transform: rotate(321.4285714286deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(27) {
+  transform: rotate(334.2857142857deg);
+}
+
+.element .model .orbital .electron:nth-last-child(28):first-child~.electron:nth-child(28) {
+  transform: rotate(347.1428571429deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(2) {
+  transform: rotate(12.4137931034deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(3) {
+  transform: rotate(24.8275862069deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(4) {
+  transform: rotate(37.2413793103deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(5) {
+  transform: rotate(49.6551724138deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(6) {
+  transform: rotate(62.0689655172deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(7) {
+  transform: rotate(74.4827586207deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(8) {
+  transform: rotate(86.8965517241deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(9) {
+  transform: rotate(99.3103448276deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(10) {
+  transform: rotate(111.724137931deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(11) {
+  transform: rotate(124.1379310345deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(12) {
+  transform: rotate(136.5517241379deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(13) {
+  transform: rotate(148.9655172414deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(14) {
+  transform: rotate(161.3793103448deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(15) {
+  transform: rotate(173.7931034483deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(16) {
+  transform: rotate(186.2068965517deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(17) {
+  transform: rotate(198.6206896552deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(18) {
+  transform: rotate(211.0344827586deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(19) {
+  transform: rotate(223.4482758621deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(20) {
+  transform: rotate(235.8620689655deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(21) {
+  transform: rotate(248.275862069deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(22) {
+  transform: rotate(260.6896551724deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(23) {
+  transform: rotate(273.1034482759deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(24) {
+  transform: rotate(285.5172413793deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(25) {
+  transform: rotate(297.9310344828deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(26) {
+  transform: rotate(310.3448275862deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(27) {
+  transform: rotate(322.7586206897deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(28) {
+  transform: rotate(335.1724137931deg);
+}
+
+.element .model .orbital .electron:nth-last-child(29):first-child~.electron:nth-child(29) {
+  transform: rotate(347.5862068966deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(2) {
+  transform: rotate(12deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(3) {
+  transform: rotate(24deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(4) {
+  transform: rotate(36deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(5) {
+  transform: rotate(48deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(6) {
+  transform: rotate(60deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(7) {
+  transform: rotate(72deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(8) {
+  transform: rotate(84deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(9) {
+  transform: rotate(96deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(10) {
+  transform: rotate(108deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(11) {
+  transform: rotate(120deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(12) {
+  transform: rotate(132deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(13) {
+  transform: rotate(144deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(14) {
+  transform: rotate(156deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(15) {
+  transform: rotate(168deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(16) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(17) {
+  transform: rotate(192deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(18) {
+  transform: rotate(204deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(19) {
+  transform: rotate(216deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(20) {
+  transform: rotate(228deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(21) {
+  transform: rotate(240deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(22) {
+  transform: rotate(252deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(23) {
+  transform: rotate(264deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(24) {
+  transform: rotate(276deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(25) {
+  transform: rotate(288deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(26) {
+  transform: rotate(300deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(27) {
+  transform: rotate(312deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(28) {
+  transform: rotate(324deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(29) {
+  transform: rotate(336deg);
+}
+
+.element .model .orbital .electron:nth-last-child(30):first-child~.electron:nth-child(30) {
+  transform: rotate(348deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(2) {
+  transform: rotate(11.6129032258deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(3) {
+  transform: rotate(23.2258064516deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(4) {
+  transform: rotate(34.8387096774deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(5) {
+  transform: rotate(46.4516129032deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(6) {
+  transform: rotate(58.064516129deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(7) {
+  transform: rotate(69.6774193548deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(8) {
+  transform: rotate(81.2903225806deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(9) {
+  transform: rotate(92.9032258065deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(10) {
+  transform: rotate(104.5161290323deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(11) {
+  transform: rotate(116.1290322581deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(12) {
+  transform: rotate(127.7419354839deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(13) {
+  transform: rotate(139.3548387097deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(14) {
+  transform: rotate(150.9677419355deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(15) {
+  transform: rotate(162.5806451613deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(16) {
+  transform: rotate(174.1935483871deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(17) {
+  transform: rotate(185.8064516129deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(18) {
+  transform: rotate(197.4193548387deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(19) {
+  transform: rotate(209.0322580645deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(20) {
+  transform: rotate(220.6451612903deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(21) {
+  transform: rotate(232.2580645161deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(22) {
+  transform: rotate(243.8709677419deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(23) {
+  transform: rotate(255.4838709677deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(24) {
+  transform: rotate(267.0967741935deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(25) {
+  transform: rotate(278.7096774194deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(26) {
+  transform: rotate(290.3225806452deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(27) {
+  transform: rotate(301.935483871deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(28) {
+  transform: rotate(313.5483870968deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(29) {
+  transform: rotate(325.1612903226deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(30) {
+  transform: rotate(336.7741935484deg);
+}
+
+.element .model .orbital .electron:nth-last-child(31):first-child~.electron:nth-child(31) {
+  transform: rotate(348.3870967742deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(1) {
+  transform: rotate(0deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(2) {
+  transform: rotate(11.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(3) {
+  transform: rotate(22.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(4) {
+  transform: rotate(33.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(5) {
+  transform: rotate(45deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(6) {
+  transform: rotate(56.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(7) {
+  transform: rotate(67.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(8) {
+  transform: rotate(78.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(9) {
+  transform: rotate(90deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(10) {
+  transform: rotate(101.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(11) {
+  transform: rotate(112.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(12) {
+  transform: rotate(123.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(13) {
+  transform: rotate(135deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(14) {
+  transform: rotate(146.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(15) {
+  transform: rotate(157.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(16) {
+  transform: rotate(168.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(17) {
+  transform: rotate(180deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(18) {
+  transform: rotate(191.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(19) {
+  transform: rotate(202.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(20) {
+  transform: rotate(213.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(21) {
+  transform: rotate(225deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(22) {
+  transform: rotate(236.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(23) {
+  transform: rotate(247.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(24) {
+  transform: rotate(258.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(25) {
+  transform: rotate(270deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(26) {
+  transform: rotate(281.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(27) {
+  transform: rotate(292.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(28) {
+  transform: rotate(303.75deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(29) {
+  transform: rotate(315deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(30) {
+  transform: rotate(326.25deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(31) {
+  transform: rotate(337.5deg);
+}
+
+.element .model .orbital .electron:nth-last-child(32):first-child~.electron:nth-child(32) {
+  transform: rotate(348.75deg);
+}
+
+.element input[type=radio] {
+  -webkit-appearance: none;
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.element input[type=radio].activate:hover~.square {
+  z-index: 2;
+  transform: scale(1.25);
+  transition-delay: 0ms;
+  transition-timing-function: ease;
+  outline: none;
+  pointer-events: none;
+}
+
+.element input[type=radio].activate:checked+input[type=radio].deactivate {
+  z-index: 3;
+  pointer-events: all;
+}
+
+.element input[type=radio].activate:checked~.overlay {
+  opacity: 1;
+  z-index: 3;
+  width: 900%;
+  height: 900%;
+  backdrop-filter: blur(10px);
+}
+
+.element input[type=radio].activate:checked~.square {
+  z-index: 3;
+  position: absolute;
+  transform: scale(6);
+  box-shadow: 0 0 0.4vw currentColor;
+  transition-duration: 500ms, 0ms, 200ms, 200ms, 200ms, 200ms;
+  transition-delay: 0ms;
+  transition-timing-function: ease-in-out;
+  outline: none;
+  cursor: auto;
+}
+
+.element input[type=radio].activate:checked~.square .atomic-number {
+  transform: scale(1) translate(0%, -3px);
+}
+
+.element input[type=radio].activate:checked~.square .label {
+  transition-duration: 500ms;
+  transform: scale(0.75);
+}
+
+.element input[type=radio].activate:checked~.square .phase {
+  transition: 500ms;
+  transform: translate(0%, 5%) scale(1.2);
+}
+
+.element input[type=radio].activate:checked~.square .radioactivity {
+  transition: 500ms;
+  transform: translate(0%, -55%) scale(1.2);
+}
+
+.element input[type=radio].activate:checked~.square .origin {
+  transition: 500ms;
+  transform: translate(0%, -125%) scale(1.1);
+}
+
+.element input[type=radio].activate:checked~.square .electronconfiguration {
+  opacity: 1;
+  transform: translate(76px, -36px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .electronegativity {
+  opacity: 1;
+  transform: translate(76px, -29.35px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .electronaffinity {
+  opacity: 1;
+  transform: translate(76px, -22.7px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .ionizationenergy {
+  opacity: 1;
+  transform: translate(76px, -16.05px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .density {
+  opacity: 1;
+  transform: translate(76px, -9.4px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .meltingpoint {
+  opacity: 1;
+  transform: translate(76px, -2.75px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .boilingpoint {
+  opacity: 1;
+  transform: translate(76px, 3.9px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .discovery {
+  opacity: 1;
+  transform: translate(76px, 10.55px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .atomicradius {
+  opacity: 1;
+  transform: translate(76px, 17.2px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .heatoffusion {
+  opacity: 1;
+  transform: translate(76px, 23.85px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .heatofvapor {
+  opacity: 1;
+  transform: translate(76px, 30.5px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .oxidationstates {
+  opacity: 1;
+  transform: translate(76px, 37.15px);
+  transition: 0ms;
+}
+
+.element input[type=radio].activate:checked~.square .atomic-weight {
+  opacity: 1;
+  transition: 500ms;
+}
+
+.element input[type=radio].activate:checked~.square .model {
+  display: block;
+  animation: fade-in;
+  animation-duration: 1s;
+}
+
+.element input[type=radio].activate:checked~.square .orbital {
+  animation-name: rotate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.element input[type=radio].deactivate {
+  position: fixed;
+  display: block;
+  z-index: 5;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.element input[type=radio].deactivate:checked~.square {
+  z-index: 1;
+}
+
+.placeholder {
+  position: relative;
+  z-index: -1;
+  padding-bottom: 100%;
+  color: #fff;
+  transition: 500ms;
+}
+
+.placeholder .square {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0c0c0c;
+  border: 2px solid;
+  box-sizing: border-box;
+  box-shadow: 0 0 0.15vw currentColor;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7vw;
+  font-weight: 500;
+  padding-bottom: 12px;
+}
+
+.placeholder .number {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  padding: 3px;
+  padding-top: 4px;
+  flex-direction: column;
+  opacity: 1;
+  font-size: 0.8vw;
+  font-weight: 700;
+}
+
+.placeholder .name {
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  font-size: 0.65vw;
+}
+
+.gap2 {
+  position: relative;
+  padding-bottom: 100%;
+  transition: 500ms;
+}
+
+.gap2::before {
+  content: "";
+  position: absolute;
+  left: 30%;
+  top: 0;
+  width: 0%;
+  height: calc(255% + 5px * 2 - 4px);
+  border-width: 0 0 2px 2px;
+  border-style: solid;
+  margin-left: -1px;
+  color: #0cff9e;
+  box-shadow: 0 0 0.4vw currentColor;
+  opacity: 1;
+}
+
+.gap2::after {
+  content: "";
+  position: absolute;
+  left: 30%;
+  top: 263%;
+  width: 70%;
+  height: 0%;
+  border-width: 0 0 2px 2px;
+  border-style: solid;
+  margin-left: -1px;
+  color: #0cff9e;
+  box-shadow: 0 0 0.4vw currentColor;
+  opacity: 1;
+}
+
+.gap {
+  position: relative;
+  padding-bottom: 100%;
+  transition: 500ms;
+}
+
+.gap::before {
+  content: "";
+  position: absolute;
+  left: 70%;
+  top: 0;
+  width: 0%;
+  height: calc(150% + 5px * 2 - 4px);
+  border-width: 0 0 2px 2px;
+  border-style: solid;
+  box-shadow: 0 0 0.4vw currentColor;
+  margin-left: -1px;
+  color: #046fc2;
+  opacity: 1;
+}
+
+.gap::after {
+  content: "";
+  position: absolute;
+  left: 70%;
+  top: 160%;
+  width: 30%;
+  height: 0%;
+  border-width: 0 0 2px 2px;
+  border-style: solid;
+  box-shadow: 0 0 0.4vw currentColor;
+  margin-left: -1px;
+  color: #046fc2;
+  opacity: 1;
+}
+
+.radioactive {
+  color: #00ff00;
+}
+
+.not-radioactive {
+  color: #ffffff;
+}
+
+.primordial {
+  color: #157c00;
+}
+
+.from-decay {
+  color: #ffff00;
+}
+
+.synthetic {
+  color: #00ffff;
+}
+
+.antiquity {
+  color: #884a00;
+}
+
+.eighteenth {
+  color: #c0b600;
+}
+
+.earlynineteenth {
+  color: #003c9d;
+}
+
+.latenineteenthtotwentieth {
+  color: #b85eff;
+}
+
+.modern {
+  color: #42ffef;
+}
+
+.solid {
+  color: #ffffff;
+}
+
+.liquid {
+  color: #0000ff;
+}
+
+.gas {
+  color: #ff0000;
+}
+
+.unknownphase {
+  color: #aaaaaa;
+}
+
+.alkali-metal {
+  color: #ff3322;
+}
+
+.alkaline-earth-metal {
+  color: #ffaa00;
+}
+
+.lanthanoid {
+  color: #046fc2;
+}
+
+.actinoid {
+  color: #0cff9e;
+}
+
+.transition-metal {
+  color: #00aaff;
+}
+
+.post-transition-metal {
+  color: #aa00ff;
+}
+
+.metalloid {
+  color: #77ff00;
+}
+
+.other-nonmetal {
+  color: #00fdd4;
+}
+
+.halogen {
+  color: #ffff00;
+}
+
+.noble-gas {
+  color: #ff2281;
+}
+
+.unknown {
+  color: #cccccc;
+}
+
+.r1 {
+  grid-row: 1;
+}
+
+.r2 {
+  grid-row: 2;
+}
+
+.r3 {
+  grid-row: 3;
+}
+
+.r4 {
+  grid-row: 4;
+}
+
+.r5 {
+  grid-row: 5;
+}
+
+.r6 {
+  grid-row: 6;
+}
+
+.r7 {
+  grid-row: 7;
+}
+
+.r8 {
+  grid-row: 8;
+}
+
+.r9 {
+  grid-row: 9;
+}
+
+.r10 {
+  grid-row: 10;
+}
+
+.c1 {
+  grid-column: 1;
+}
+
+.c2 {
+  grid-column: 2;
+}
+
+.c3 {
+  grid-column: 3;
+}
+
+.c4 {
+  grid-column: 4;
+}
+
+.c5 {
+  grid-column: 5;
+}
+
+.c6 {
+  grid-column: 6;
+}
+
+.c7 {
+  grid-column: 7;
+}
+
+.c8 {
+  grid-column: 8;
+}
+
+.c9 {
+  grid-column: 9;
+}
+
+.c10 {
+  grid-column: 10;
+}
+
+.c11 {
+  grid-column: 11;
+}
+
+.c12 {
+  grid-column: 12;
+}
+
+.c13 {
+  grid-column: 13;
+}
+
+.c14 {
+  grid-column: 14;
+}
+
+.c15 {
+  grid-column: 15;
+}
+
+.c16 {
+  grid-column: 16;
+}
+
+.c17 {
+  grid-column: 17;
+}
+
+.c18 {
+  grid-column: 18;
+}
+
+.r1 input[type=radio].activate:checked~.square {
+  top: 457%;
+}
+
+.r2 input[type=radio].activate:checked~.square {
+  top: 350%;
+}
+
+.r3 input[type=radio].activate:checked~.square {
+  top: 241%;
+}
+
+.r4 input[type=radio].activate:checked~.square {
+  top: 130%;
+}
+
+.r5 input[type=radio].activate:checked~.square {
+  top: 28%;
+}
+
+.r6 input[type=radio].activate:checked~.square {
+  top: -86%;
+}
+
+.r7 input[type=radio].activate:checked~.square {
+  top: -184%;
+}
+
+.r9 input[type=radio].activate:checked~.square {
+  top: -382%;
+}
+
+.r10 input[type=radio].activate:checked~.square {
+  top: -480%;
+}
+
+.c1 input[type=radio].activate:checked~.square {
+  left: 570%;
+}
+
+.c2 input[type=radio].activate:checked~.square {
+  left: 463%;
+}
+
+.c3 input[type=radio].activate:checked~.square {
+  left: 356%;
+}
+
+.c4 input[type=radio].activate:checked~.square {
+  left: 249%;
+}
+
+.c5 input[type=radio].activate:checked~.square {
+  left: 142%;
+}
+
+.c6 input[type=radio].activate:checked~.square {
+  left: 35%;
+}
+
+.c7 input[type=radio].activate:checked~.square {
+  left: -72%;
+}
+
+.c8 input[type=radio].activate:checked~.square {
+  left: -179%;
+}
+
+.c9 input[type=radio].activate:checked~.square {
+  left: -286%;
+}
+
+.c10 input[type=radio].activate:checked~.square {
+  left: -392%;
+}
+
+.c11 input[type=radio].activate:checked~.square {
+  left: -500%;
+}
+
+.c12 input[type=radio].activate:checked~.square {
+  left: -606%;
+}
+
+.c13 input[type=radio].activate:checked~.square {
+  left: -712%;
+}
+
+.c14 input[type=radio].activate:checked~.square {
+  left: -818%;
+}
+
+.c15 input[type=radio].activate:checked~.square {
+  left: -924%;
+}
+
+.c16 input[type=radio].activate:checked~.square {
+  left: -1030%;
+}
+
+.c17 input[type=radio].activate:checked~.square {
+  left: -1136%;
+}
+
+.c18 input[type=radio].activate:checked~.square {
+  left: -1242%;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes noise {
+
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  10% {
+    background-position: -5% -10%;
+  }
+
+  20% {
+    background-position: -15% 5%;
+  }
+
+  30% {
+    background-position: 7% -25%;
+  }
+
+  40% {
+    background-position: 20% 25%;
+  }
+
+  50% {
+    background-position: -25% 10%;
+  }
+
+  60% {
+    background-position: 15% 5%;
+  }
+
+  70% {
+    background-position: 0% 15%;
+  }
+
+  80% {
+    background-position: 25% 35%;
+  }
+
+  90% {
+    background-position: -10% 10%;
+  }
+}
+
+.title {
+  position: relative;
+  color: #ffffff;
+  z-index: 1;
+  grid-row: 1;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 3.25vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  font-weight: 650;
+  transform: translate(15%, -15%);
+}
+
+.title .row {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.title .row label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.key1 {
+  position: relative;
+  z-index: 1;
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 0.85vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, -34%);
+}
+
+.key1 .row {
+  position: relative;
+  display: flex;
+  width: 35.97%;
+  justify-content: space-between;
+}
+
+.key1 .row label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.key1 .row label:hover {
+  font-weight: 900 !important;
+}
+
+.key2 {
+  position: relative;
+  z-index: 1;
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 0.85vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, -7%);
+}
+
+.key2 .row {
+  position: relative;
+  display: flex;
+  width: 25.97%;
+  justify-content: space-between;
+}
+
+.key2 .row label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.key2 .row label:hover {
+  font-weight: 900 !important;
+}
+
+.key3 {
+  position: relative;
+  z-index: 1;
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 0.85vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, 20%);
+}
+
+.key3 .row {
+  position: relative;
+  display: flex;
+  width: 36.95%;
+  justify-content: space-between;
+}
+
+.key3 .row label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.key3 .row label:hover {
+  font-weight: 900 !important;
+}
+
+.key4 {
+  position: relative;
+  z-index: 1;
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 0.85vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, 47%);
+}
+
+.key4 .row {
+  position: relative;
+  display: flex;
+  width: 32.7%;
+  justify-content: space-between;
+}
+
+.key4 .row label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.key4 .row label:hover {
+  font-weight: 900 !important;
+}
+
+.key5 {
+  position: relative;
+  z-index: 1;
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 0.85vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, 74%);
+}
+
+.key5 .row {
+  position: relative;
+  display: flex;
+  width: 28.65%;
+  justify-content: space-between;
+}
+
+.key5 .row label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.key5 .row label:hover {
+  font-weight: 900 !important;
+}
+
+.key6 {
+  position: relative;
+  z-index: 1;
+  grid-row: 2;
+  grid-column-start: 3;
+  grid-column-end: 12;
+  font-size: 0.85vw;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, 101%);
+}
+
+.key6 .row {
+  position: relative;
+  display: flex;
+  width: 31%;
+  justify-content: space-between;
+}
+
+.key6 .row label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.key6 .row label:hover {
+  font-weight: 900 !important;
+}
+
+.groups1 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 1;
+  grid-column-start: 1;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, -20%);
+}
+
+.groups1 .column {
+  position: relative;
+  display: flex;
+  width: 103%;
+  justify-content: space-between;
+  margin-left: 34px;
+  margin-right: -50px;
+}
+
+.groups1 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups2 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column-start: 2;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, -20%);
+}
+
+.groups2 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups2 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups3 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 3;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(3%, -20%);
+}
+
+.groups3 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups3 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups4 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 4;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(2%, -20%);
+}
+
+.groups4 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups4 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups5 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 5;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(1%, -20%);
+}
+
+.groups5 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups5 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups6 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 6;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, -20%);
+}
+
+.groups6 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups6 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups7 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 7;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, -20%);
+}
+
+.groups7 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups7 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups8 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 8;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-1%, -20%);
+}
+
+.groups8 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups8 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups9 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 9;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-1%, -20%);
+}
+
+.groups9 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups9 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups10 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 10;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-3%, -20%);
+}
+
+.groups10 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups10 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups11 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 11;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-4%, -20%);
+}
+
+.groups11 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups11 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups12 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column-start: 12;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-5%, -20%);
+}
+
+.groups12 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups12 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups13 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column-start: 13;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-4%, -20%);
+}
+
+.groups13 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups13 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups14 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column-start: 14;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-4%, -20%);
+}
+
+.groups14 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups14 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups15 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column-start: 15;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-3%, -20%);
+}
+
+.groups15 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups15 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups16 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column-start: 16;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-4%, -20%);
+}
+
+.groups16 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups16 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups17 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column-start: 17;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-5%, -20%);
+}
+
+.groups17 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups17 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.groups18 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 1;
+  grid-column-start: 18;
+  font-size: 0.9vw;
+  line-height: 1px;
+  display: flex;
+  align-items: bottom;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-6%, -20%);
+}
+
+.groups18 .column {
+  position: relative;
+  display: flex;
+  width: 150%;
+  justify-content: space-between;
+  margin-left: 32px;
+  margin-right: -50px;
+}
+
+.groups18 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 1;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods1 .column {
+  position: relative;
+}
+
+.periods1 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods2 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods2 .column {
+  position: relative;
+}
+
+.periods2 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods3 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 3;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods3 .column {
+  position: relative;
+}
+
+.periods3 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods4 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 4;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods4 .column {
+  position: relative;
+}
+
+.periods4 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods5 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 5;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods5 .column {
+  position: relative;
+}
+
+.periods5 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods6 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 6;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods6 .column {
+  position: relative;
+}
+
+.periods6 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.periods7 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 7;
+  grid-column: 1;
+  font-size: 0.9vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-25%, 35%);
+}
+
+.periods7 .column {
+  position: relative;
+}
+
+.periods7 .column label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.phase1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 7;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, 29%);
+}
+
+.phase1 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.phase1 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.phase1 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.phase2 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 7;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(-1%, 56%);
+}
+
+.phase2 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.phase2 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.phase2 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.phase3 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 7;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, 83%);
+}
+
+.phase3 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.phase3 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.phase3 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.phase4 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 7;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, 110%);
+}
+
+.phase4 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.phase4 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.phase4 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.radioactive1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 3;
+  grid-column: 8/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(25%, 29%);
+}
+
+.radioactive1 .thing {
+  position: relative;
+  display: flex;
+  width: 99999%;
+  justify-content: space-between;
+}
+
+.radioactive1 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.radioactive1 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.origin1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 8/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(25%, 29%);
+}
+
+.origin1 .thing {
+  position: relative;
+  width: 1000%;
+}
+
+.origin1 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.origin1 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.origin2 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 8/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(25%, 56%);
+}
+
+.origin2 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.origin2 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.origin2 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.origin3 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 8/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(25%, 83%);
+}
+
+.origin3 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.origin3 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.origin3 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.discovery1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 10;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(17.5%, 29%);
+}
+
+.discovery1 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.discovery1 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.discovery1 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.discovery2 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 10;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(8%, 56%);
+  width: 200%;
+  text-align: left;
+}
+
+.discovery2 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.discovery2 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.discovery2 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.discovery3 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 10;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  width: 200%;
+  transform: translate(8%, 83%);
+}
+
+.discovery3 .thing {
+  position: relative;
+  width: 9999999%;
+}
+
+.discovery3 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.discovery3 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.discovery4 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 10;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(16%, 110%);
+}
+
+.discovery4 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.discovery4 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.discovery4 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.discovery5 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 10;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(17%, 137%);
+}
+
+.discovery5 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.discovery5 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.discovery5 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.sort1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(130%, 29%);
+}
+
+.sort1 .thing {
+  position: relative;
+  width: 1000%;
+}
+
+.sort1 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.sort1 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.sort2 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(130%, 56%);
+}
+
+.sort2 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.sort2 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.sort2 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.sort3 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(130%, 83%);
+}
+
+.sort3 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.sort3 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.sort3 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.sort4 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(130%, 110%);
+}
+
+.sort4 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.sort4 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.sort4 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.sort5 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(130%, 137%);
+}
+
+.sort5 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.sort5 .thing label {
+  opacity: 1;
+  cursor: pointer;
+  transition: 120ms;
+  pointer-events: all;
+}
+
+.sort5 .thing label:hover {
+  font-weight: 900 !important;
+}
+
+.label1 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 7/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(0%, 2%);
+}
+
+.label1 .thing {
+  position: relative;
+  width: 1000%;
+}
+
+.label1 .thing label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.label2 {
+  position: relative;
+  display: flex;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 8/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(25%, 2%);
+}
+
+.label2 .thing {
+  position: relative;
+  width: 100%;
+}
+
+.label2 .thing label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.label3 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 8/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(25%, 110%);
+}
+
+.label3 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.label3 .thing label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.label4 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(60%, 2%);
+}
+
+.label4 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.label4 .thing label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+.label5 {
+  position: relative;
+  color: #ffffff;
+  grid-row: 2;
+  grid-column: 9/span 2;
+  font-size: 0.85vw;
+  pointer-events: none;
+  user-select: none;
+  transform: translate(130%, 2%);
+}
+
+.label5 .thing {
+  position: relative;
+  width: 99999%;
+}
+
+.label5 .thing label {
+  opacity: 1;
+  transition: 120ms;
+}
+
+#alkali-metals:checked~.periodic-table .element:not(.alkali-metal-e),
+#alkaline-earth-metals:checked~.periodic-table .element:not(.alkaline-earth-metal-e),
+#lanthanoids:checked~.periodic-table .element:not(.lanthanoid-e),
+#actinoids:checked~.periodic-table .element:not(.actinoid-e),
+#transition-metals:checked~.periodic-table .element:not(.transition-metal-e),
+#post-transition-metals:checked~.periodic-table .element:not(.post-transition-metal-e),
+#metalloids:checked~.periodic-table .element:not(.metalloid-e),
+#other-nonmetals:checked~.periodic-table .element:not(.other-nonmetal-e),
+#halogens:checked~.periodic-table .element:not(.halogen-e),
+#noble-gasses:checked~.periodic-table .element:not(.noble-gas-e),
+#unknown:checked~.periodic-table .element:not(.unknown-e),
+#alkali-metals:checked~.periodic-table .placeholder,
+#alkaline-earth-metals:checked~.periodic-table .placeholder,
+#lanthanoids:checked~.periodic-table .placeholder:not(.lanthanoid),
+#actinoids:checked~.periodic-table .placeholder:not(.actinoid),
+#transition-metals:checked~.periodic-table .placeholder,
+#post-transition-metals:checked~.periodic-table .placeholder,
+#metalloids:checked~.periodic-table .placeholder,
+#other-nonmetals:checked~.periodic-table .placeholder,
+#halogens:checked~.periodic-table .placeholder,
+#noble-gasses:checked~.periodic-table .placeholder,
+#unknown:checked~.periodic-table .placeholder,
+#alkali-metals:checked~.periodic-table .row label:not(.alkali-metal),
+#alkaline-earth-metals:checked~.periodic-table .row label:not(.alkaline-earth-metal),
+#lanthanoids:checked~.periodic-table .row label:not(.lanthanoid),
+#actinoids:checked~.periodic-table .row label:not(.actinoid),
+#transition-metals:checked~.periodic-table .row label:not(.transition-metal),
+#post-transition-metals:checked~.periodic-table .row label:not(.post-transition-metal),
+#metalloids:checked~.periodic-table .row label:not(.metalloid),
+#other-nonmetals:checked~.periodic-table .row label:not(.other-nonmetal),
+#halogens:checked~.periodic-table .row label:not(.halogen),
+#noble-gasses:checked~.periodic-table .row label:not(.noble-gas),
+#unknown:checked~.periodic-table .row label:not(.unknown),
+#alkali-metals:checked~.periodic-table .column,
+#alkaline-earth-metals:checked~.periodic-table .column,
+#lanthanoids:checked~.periodic-table .column,
+#actinoids:checked~.periodic-table .column,
+#transition-metals:checked~.periodic-table .column,
+#post-transition-metals:checked~.periodic-table .column,
+#metalloids:checked~.periodic-table .column,
+#other-nonmetals:checked~.periodic-table .column,
+#halogens:checked~.periodic-table .column,
+#noble-gasses:checked~.periodic-table .column,
+#unknown:checked~.periodic-table .column,
+#alkali-metals:checked~.periodic-table .thing,
+#alkaline-earth-metals:checked~.periodic-table .thing,
+#lanthanoids:checked~.periodic-table .thing,
+#actinoids:checked~.periodic-table .thing,
+#transition-metals:checked~.periodic-table .thing,
+#post-transition-metals:checked~.periodic-table .thing,
+#metalloids:checked~.periodic-table .thing,
+#other-nonmetals:checked~.periodic-table .thing,
+#halogens:checked~.periodic-table .thing,
+#noble-gasses:checked~.periodic-table .thing,
+#unknown:checked~.periodic-table .thing {
+  opacity: 0.15;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+#solid:checked~.periodic-table .column,
+#solid:checked~.periodic-table .row label,
+#solid:checked~.periodic-table .thing label:not(.solid),
+#solid:checked~.periodic-table .placeholder,
+#solid:checked~.periodic-table .element:not(.solid-e),
+#solid:checked~.periodic-table .gap,
+#solid:checked~.periodic-table .gap2,
+#liquid:checked~.periodic-table .column,
+#liquid:checked~.periodic-table .row label,
+#liquid:checked~.periodic-table .thing label:not(.liquid),
+#liquid:checked~.periodic-table .placeholder,
+#liquid:checked~.periodic-table .element:not(.liquid-e),
+#liquid:checked~.periodic-table .gap,
+#liquid:checked~.periodic-table .gap2,
+#gas:checked~.periodic-table .column,
+#gas:checked~.periodic-table .row label,
+#gas:checked~.periodic-table .thing label:not(.gas),
+#gas:checked~.periodic-table .placeholder,
+#gas:checked~.periodic-table .element:not(.gas-e),
+#gas:checked~.periodic-table .gap,
+#gas:checked~.periodic-table .gap2,
+#unknownphase:checked~.periodic-table .column,
+#unknownphase:checked~.periodic-table .row label,
+#unknownphase:checked~.periodic-table .thing label:not(.unknownphase),
+#unknownphase:checked~.periodic-table .placeholder,
+#unknownphase:checked~.periodic-table .element:not(.unknownphase-e),
+#unknownphase:checked~.periodic-table .gap,
+#unknownphase:checked~.periodic-table .gap2 {
+  opacity: 0.15;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+#primordial:checked~.periodic-table .column,
+#primordial:checked~.periodic-table .row label,
+#primordial:checked~.periodic-table .thing label:not(.primordial),
+#primordial:checked~.periodic-table .placeholder,
+#primordial:checked~.periodic-table .element:not(.primordial-e),
+#primordial:checked~.periodic-table .gap,
+#primordial:checked~.periodic-table .gap2,
+#from-decay:checked~.periodic-table .column,
+#from-decay:checked~.periodic-table .row label,
+#from-decay:checked~.periodic-table .thing label:not(.from-decay),
+#from-decay:checked~.periodic-table .placeholder,
+#from-decay:checked~.periodic-table .element:not(.from-decay-e),
+#from-decay:checked~.periodic-table .gap,
+#from-decay:checked~.periodic-table .gap2,
+#synthetic:checked~.periodic-table .column,
+#synthetic:checked~.periodic-table .row label,
+#synthetic:checked~.periodic-table .thing label:not(.synthetic),
+#synthetic:checked~.periodic-table .placeholder,
+#synthetic:checked~.periodic-table .element:not(.synthetic-e),
+#synthetic:checked~.periodic-table .gap,
+#synthetic:checked~.periodic-table .gap2,
+#radioactive:checked~.periodic-table .column,
+#radioactive:checked~.periodic-table .row label,
+#radioactive:checked~.periodic-table .thing label:not(.radioactive),
+#radioactive:checked~.periodic-table .placeholder,
+#radioactive:checked~.periodic-table .element:not(.radioactive-e),
+#radioactive:checked~.periodic-table .gap,
+#radioactive:checked~.periodic-table .gap2 {
+  opacity: 0.15;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+#antiquity:checked~.periodic-table .column,
+#antiquity:checked~.periodic-table .row label,
+#antiquity:checked~.periodic-table .thing label:not(.antiquity),
+#antiquity:checked~.periodic-table .placeholder,
+#antiquity:checked~.periodic-table .element:not(.antiquity-e),
+#antiquity:checked~.periodic-table .gap,
+#antiquity:checked~.periodic-table .gap2,
+#eighteenth:checked~.periodic-table .column,
+#eighteenth:checked~.periodic-table .row label,
+#eighteenth:checked~.periodic-table .thing label:not(.eighteenth),
+#eighteenth:checked~.periodic-table .placeholder,
+#eighteenth:checked~.periodic-table .element:not(.eighteenth-e),
+#eighteenth:checked~.periodic-table .gap,
+#eighteenth:checked~.periodic-table .gap2,
+#earlynineteenth:checked~.periodic-table .column,
+#earlynineteenth:checked~.periodic-table .row label,
+#earlynineteenth:checked~.periodic-table .thing label:not(.earlynineteenth),
+#earlynineteenth:checked~.periodic-table .placeholder,
+#earlynineteenth:checked~.periodic-table .element:not(.earlynineteenth-e),
+#earlynineteenth:checked~.periodic-table .gap,
+#earlynineteenth:checked~.periodic-table .gap2,
+#latenineteenthtotwentieth:checked~.periodic-table .column,
+#latenineteenthtotwentieth:checked~.periodic-table .row label,
+#latenineteenthtotwentieth:checked~.periodic-table .thing label:not(.latenineteenthtotwentieth),
+#latenineteenthtotwentieth:checked~.periodic-table .placeholder,
+#latenineteenthtotwentieth:checked~.periodic-table .element:not(.latenineteenthtotwentieth-e),
+#latenineteenthtotwentieth:checked~.periodic-table .gap,
+#latenineteenthtotwentieth:checked~.periodic-table .gap2,
+#modern:checked~.periodic-table .column,
+#modern:checked~.periodic-table .row label,
+#modern:checked~.periodic-table .thing label:not(.modern),
+#modern:checked~.periodic-table .placeholder,
+#modern:checked~.periodic-table .element:not(.modern-e),
+#modern:checked~.periodic-table .gap,
+#modern:checked~.periodic-table .gap2 {
+  opacity: 0.15;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.alkali-metal-e) {
+  color: #ff3322;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.alkaline-earth-metal-e) {
+  color: #ffaa00;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.lanthanoid-e) {
+  color: #046fc2;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.actinoid-e) {
+  color: #0cff9e;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.transition-metal-e) {
+  color: #00aaff;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.post-transition-metal-e) {
+  color: #aa00ff;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.metalloid-e) {
+  color: #77ff00;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.other-nonmetal-e) {
+  color: #00fdd4;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.halogen-e) {
+  color: #ffff00;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.noble-gas-e) {
+  color: #ff2281;
+}
+
+#sortbycategory:checked~.periodic-table .element:is(.unknown-e) {
+  color: #cccccc;
+}
+
+#sortbycategory:checked~.periodic-table .placeholder:is(.lanthanoid),
+#sortbycategory:checked~.periodic-table .gap::before,
+#sortbycategory:checked~.periodic-table .gap::after {
+  color: #046fc2;
+}
+
+#sortbycategory:checked~.periodic-table .placeholder:is(.actinoid),
+#sortbycategory:checked~.periodic-table .gap2::before,
+#sortbycategory:checked~.periodic-table .gap2::after {
+  color: #0cff9e;
+}
+
+#sortbycategory:checked~.periodic-table .sort2 label,
+#sortbycategory:checked~.periodic-table .sort3 label,
+#sortbycategory:checked~.periodic-table .sort4 label,
+#sortbycategory:checked~.periodic-table .sort5 label {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#sortbycategory:checked~.periodic-table .sort1 label {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#sortbyphase:checked~.periodic-table .element:is(.solid-e) {
+  color: #ffffff;
+}
+
+#sortbyphase:checked~.periodic-table .element:is(.liquid-e) {
+  color: #0000ff;
+}
+
+#sortbyphase:checked~.periodic-table .element:is(.gas-e) {
+  color: #ff0000;
+}
+
+#sortbyphase:checked~.periodic-table .element:is(.unknownphase-e) {
+  color: #aaaaaa;
+}
+
+#sortbyphase:checked~.periodic-table .placeholder,
+#sortbyphase:checked~.periodic-table .gap::before,
+#sortbyphase:checked~.periodic-table .gap::after,
+#sortbyphase:checked~.periodic-table .gap2::before,
+#sortbyphase:checked~.periodic-table .gap2::after {
+  color: #ffffff;
+}
+
+#sortbyphase:checked~.periodic-table .sort1 label,
+#sortbyphase:checked~.periodic-table .sort3 label,
+#sortbyphase:checked~.periodic-table .sort4 label,
+#sortbyphase:checked~.periodic-table .sort5 label {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#sortbyphase:checked~.periodic-table .sort2 label {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.--e) {
+  color: #969696;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.zeroseven-e) {
+  color: #0007e7;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.zeroeight-e) {
+  color: #000ee0;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.zeronine-e) {
+  color: #0015d9;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.one-e) {
+  color: #001cd2;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.oneone-e) {
+  color: #0023cb;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.onetwo-e) {
+  color: #002ac4;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.onethree-e) {
+  color: #0031bd;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.onefour-e) {
+  color: #0038b6;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.onefive-e) {
+  color: #003faf;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.onesix-e) {
+  color: #0046a8;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.oneseven-e) {
+  color: #004da1;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.oneeight-e) {
+  color: #00549a;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.onenine-e) {
+  color: #005b93;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.two-e) {
+  color: #00628c;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twoone-e) {
+  color: #006985;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twotwo-e) {
+  color: #00707e;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twothree-e) {
+  color: #007777;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twofour-e) {
+  color: #007e70;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twofive-e) {
+  color: #008569;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twosix-e) {
+  color: #008c62;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twoseven-e) {
+  color: #00935b;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twoeight-e) {
+  color: #009a54;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.twonine-e) {
+  color: #00a14d;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.three-e) {
+  color: #00a846;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threeone-e) {
+  color: #00af3f;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threetwo-e) {
+  color: #00b638;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threethree-e) {
+  color: #00bd31;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threefour-e) {
+  color: #00c42a;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threefive-e) {
+  color: #00cb23;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threesix-e) {
+  color: #00d21c;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threeseven-e) {
+  color: #00d915;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threeeight-e) {
+  color: #00e00e;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.threenine-e) {
+  color: #00e707;
+}
+
+#sortbyelec:checked~.periodic-table .element:is(.four-e) {
+  color: #00ee00;
+}
+
+#sortbyelec:checked~.periodic-table .placeholder:is(.lanthanoid),
+#sortbyelec:checked~.periodic-table .gap::before,
+#sortbyelec:checked~.periodic-table .gap::after {
+  color: #002ac4;
+}
+
+#sortbyelec:checked~.periodic-table .placeholder:is(.actinoid),
+#sortbyelec:checked~.periodic-table .gap2::before,
+#sortbyelec:checked~.periodic-table .gap2::after {
+  color: #0031bd;
+}
+
+#sortbyelec:checked~.periodic-table .sort1 label,
+#sortbyelec:checked~.periodic-table .sort2 label,
+#sortbyelec:checked~.periodic-table .sort4 label,
+#sortbyelec:checked~.periodic-table .sort5 label {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#sortbyelec:checked~.periodic-table .sort3 label {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.--d) {
+  color: #969696;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.zero-d) {
+  color: red;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.one-d) {
+  color: #ff0b00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.two-d) {
+  color: #ff1600;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.three-d) {
+  color: #ff2100;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.four-d) {
+  color: #ff2c00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.five-d) {
+  color: #ff3700;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.six-d) {
+  color: #ff4200;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.seven-d) {
+  color: #ff4d00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.eight-d) {
+  color: #ff5800;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.nine-d) {
+  color: #ff6300;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.ten-d) {
+  color: #ff6e00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.eleven-d) {
+  color: #ff7900;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.twelve-d) {
+  color: #ff8400;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.thirteen-d) {
+  color: #ff8f00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.fourteen-d) {
+  color: #ff9a00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.fifteen-d) {
+  color: orange;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.sixteen-d) {
+  color: #ffb000;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.seventeen-d) {
+  color: #ffbb00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.eighteen-d) {
+  color: #ffc600;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.nineteen-d) {
+  color: #ffd100;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.twenty-d) {
+  color: #ffdc00;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.twentyone-d) {
+  color: #ffe700;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.twentytwo-d) {
+  color: #fff200;
+}
+
+#sortbydensity:checked~.periodic-table .element:is(.twentythree-d) {
+  color: #fffd00;
+}
+
+#sortbydensity:checked~.periodic-table .placeholder:is(.lanthanoid),
+#sortbydensity:checked~.periodic-table .gap::before,
+#sortbydensity:checked~.periodic-table .gap::after {
+  color: #ff5800;
+}
+
+#sortbydensity:checked~.periodic-table .placeholder:is(.actinoid),
+#sortbydensity:checked~.periodic-table .gap2::before,
+#sortbydensity:checked~.periodic-table .gap2::after {
+  color: orange;
+}
+
+#sortbydensity:checked~.periodic-table .sort1 label,
+#sortbydensity:checked~.periodic-table .sort2 label,
+#sortbydensity:checked~.periodic-table .sort3 label,
+#sortbydensity:checked~.periodic-table .sort5 label {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#sortbydensity:checked~.periodic-table .sort4 label {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+#sortbydiscovery:checked~.periodic-table .element:is(.antiquity-e) {
+  color: #884a00;
+}
+
+#sortbydiscovery:checked~.periodic-table .element:is(.eighteenth-e) {
+  color: #c0b600;
+}
+
+#sortbydiscovery:checked~.periodic-table .element:is(.earlynineteenth-e) {
+  color: #003c9d;
+}
+
+#sortbydiscovery:checked~.periodic-table .element:is(.latenineteenthtotwentieth-e) {
+  color: #b85eff;
+}
+
+#sortbydiscovery:checked~.periodic-table .element:is(.modern-e) {
+  color: #42ffef;
+}
+
+#sortbydiscovery:checked~.periodic-table .placeholder,
+#sortbydiscovery:checked~.periodic-table .gap::before,
+#sortbydiscovery:checked~.periodic-table .gap::after,
+#sortbydiscovery:checked~.periodic-table .gap2::before,
+#sortbydiscovery:checked~.periodic-table .gap2::after {
+  color: #b85eff;
+}
+
+#sortbydiscovery:checked~.periodic-table .sort1 label,
+#sortbydiscovery:checked~.periodic-table .sort2 label,
+#sortbydiscovery:checked~.periodic-table .sort3 label,
+#sortbydiscovery:checked~.periodic-table .sort4 label {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#sortbydiscovery:checked~.periodic-table .sort5 label {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.category-toggle:not(#lanthanoids):checked~.periodic-table .gap {
+  opacity: 0.15;
+}
+
+.category-toggle:not(#actinoids):checked~.periodic-table .gap2 {
+  opacity: 0.15;
+}
+
+.category-toggle:checked~.category-cancel {
+  visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.phase-toggle:checked~.phase-cancel {
+  visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.radioactivity-toggle:checked~.radioactivity-cancel {
+  visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.origin-toggle:checked~.origin-cancel {
+  visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+.discovery-toggle:checked~.discovery-cancel {
+  visibility: visible;
+  pointer-events: all;
+  cursor: pointer;
+}
